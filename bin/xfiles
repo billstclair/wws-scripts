@@ -1,0 +1,4 @@
+#!/bin/bash
+PATTERN=$1
+shift
+find . -name "$PATTERN" -exec echo '"{}"' \; | xargs "$@"

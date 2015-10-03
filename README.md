@@ -4,14 +4,14 @@ This is a collection of shell scripts that I've written over the years. I never 
 
 ## xfiles
 
-{{{
+```
 xfiles &lt;pattern> <command> <arg> ...
-}}}
+```
 
 is the same as:
 
-{{{
+```
 find . -name "&lt;pattern>" | xargs <command> <arg> ...
-}}}
+```
 
-{{{lispfiles}}} passes {{{"*.lisp"}}} as the pattern. {{{erlfiles}}} passes {{{*.erl}}} as the pattern. Make your own.
+`lispfiles` passes `"*.lisp"` as the pattern. `erlfiles` passes `*.erl` as the pattern. Make your own.

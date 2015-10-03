@@ -1,0 +1,2 @@
+#!/bin/bash
+if [[ -z $* ]];then rsync -av ./ `./.sshdir`;else rsync $* `./.sshdir`;fi

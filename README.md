@@ -66,3 +66,21 @@ The `path/to/release/dir` is wired in to the `kerl_activate` script. You'll prob
 `. kerl_activate deactivate` is longhand for `kerl_deactivate`, there mostly for those of us who may have forgotten `kerl_deactivate`.
 
 `kerl_activate` tells the kerl-generated `activate` script to enable the prompt that shows `(<build-name>)` at the beginning of your `PS1` shell prompt. Get rid of `KERL_ENABLE_PROMPT=y` if you don't like that.
+
+## rsyncit
+
+Before the advent of `git`, I used to keep directories on my local machine in sync with web servers using `rsync`. I still do for image files. The problem was that I had to remember the `username@hostname:/path/to/webserver/directory` for a bunch of different sites. `rsyncit` allows you to put a `.sshdir` script in each directory you want to mirror somewhere. That script is responsible for echoing `username@hostname:/path/to/webserver/directory`. `rsyncit` calls `./.sshdir` and puts it in the right place for `rsync`.
+
+If you give no arguments to `rsyncit`, it will sync the entire directory:
+
+```
+rsyncit
+```
+
+If you give arguments to `rsyncit` it will pass them to `rsync` with the output of the `./.sshdir` script added to the end:
+
+```
+rsyncit -av sunset-151002.jpg
+```
+
+There's a sample `.sshdir` script in the `bin` directory. Copy it to directories you want to sync, and change what it echoes appropriately.

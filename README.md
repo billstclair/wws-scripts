@@ -72,7 +72,7 @@ Like `rsyncit`, but uses `scp` to do the copying, instead of `rsync`. Uses the s
 
 ```
 cd /local/path/to/webserver/images/dir
-scpit sunset-151002
+scpit sunset-151002.jpg
 ```
 
 ## xfiles

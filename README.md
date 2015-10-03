@@ -17,7 +17,7 @@ delfasls
 
 ## ip
 
-If you're behind multiple routers, or you want to be sure that you're connected through a VPN, it can be useful to ask a remote web server what your IP address looks like to it. This script queries `http://billstclair.com/ip.php` for that. The `ip.php` script is also in the `bin` sub-directory here, in case you want to put it on your own web site instead of using mine.
+If you're behind multiple routers, or you want to be sure that you're connected through a VPN, it can be useful to ask a remote web server what your IP address looks like to it. This script queries `http://billstclair.com/ip.php` for that. The `ip.php` script is in the `aux` sub-directory here, in case you want to put it on your own web site instead of using mine.
 
 The `ip` script echoes "expecting xx.xx.xx.xx". If you want to remind yourself of what your IP should be when you're connected through a VPN provider, you can change that to the actual IP you expect. Or just comment out the line.
 
@@ -64,7 +64,7 @@ If you give arguments to `rsyncit` it will pass them to `rsync` with the output 
 rsyncit -av sunset-151002.jpg
 ```
 
-There's a sample `.sshdir` script in the `bin` directory. Copy it to directories you want to sync, and change what it echoes appropriately.
+There's a sample `.sshdir` script in the `aux` directory. Copy it to directories you want to sync, and change what it echoes appropriately.
 
 ## scpit
 

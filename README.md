@@ -4,26 +4,6 @@ This is a collection of little shell scripts that I've written over the years. I
 
 All the script files named below are in the `bin` sub-directory of this one.
 
-## xfiles
-
-```
-xfiles <pattern> <command> <arg> ...
-```
-
-is the same as:
-
-```
-find . -name "<pattern>" | xargs <command> <arg> ...
-```
-
-`lispfiles` passes `"*.lisp"` as the pattern. `erlfiles` passes `*.erl` as the pattern. Make your own.
-
-I usually use it to grep source code:
-
-```
-lispfiles fgrep defpackage
-```
-
 ## delfasls
 
 Useful to lispers. Deletes all fasl files in the current directory or any of its subdirectories, whether they're actually in this directory or they're in the sub-directory of ~/.cache into which ASDF will store them by default. This will force ASDF (or Quicklisp) to recompie the corresponding source files.
@@ -74,6 +54,7 @@ Before the advent of `git`, I used to keep directories on my local machine in sy
 If you give no arguments to `rsyncit`, it will sync the entire directory:
 
 ```
+cd /local/path/to/webserver/images/dir
 rsyncit
 ```
 
@@ -84,3 +65,32 @@ rsyncit -av sunset-151002.jpg
 ```
 
 There's a sample `.sshdir` script in the `bin` directory. Copy it to directories you want to sync, and change what it echoes appropriately.
+
+## scpit
+
+Like `rsyncit`, but uses `scp` to do the copying, instead of `rsync`. Uses the same `.sshdir` file to specify the remote location.
+
+```
+cd /local/path/to/webserver/images/dir
+scpit sunset-151002
+```
+
+## xfiles
+
+```
+xfiles <pattern> <command> <arg> ...
+```
+
+is the same as:
+
+```
+find . -name "<pattern>" | xargs <command> <arg> ...
+```
+
+`lispfiles` passes `"*.lisp"` as the pattern. `erlfiles` passes `*.erl` as the pattern. Make your own.
+
+I usually use it to grep source code:
+
+```
+lispfiles fgrep defpackage
+```

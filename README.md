@@ -5,13 +5,27 @@ This is a collection of shell scripts that I've written over the years. I never 
 ## xfiles
 
 ```
-xfiles &lt;pattern> <command> <arg> ...
+xfiles <pattern> <command> <arg> ...
 ```
 
 is the same as:
 
 ```
-find . -name "&lt;pattern>" | xargs <command> <arg> ...
+find . -name "<pattern>" | xargs <command> <arg> ...
 ```
 
 `lispfiles` passes `"*.lisp"` as the pattern. `erlfiles` passes `*.erl` as the pattern. Make your own.
+
+I usually use it to grep source code:
+
+```
+lispfiles fgrep defpackage
+```
+## delfasls
+
+Useful to lispers. Deletes all fasl files in the current directory or any of its subdirectories, whether they're actually in this directory or they're in the sub-directory of ~/.cache into which ASDF will store them by default. Does NOT delete fasls from any directory named `quicklisp`, since you rarely want to force those to recompile. If you DO want to do that, `cd` into the `quicklisp` directory first:
+
+```
+cd ~/quicklisp
+delfasls
+```

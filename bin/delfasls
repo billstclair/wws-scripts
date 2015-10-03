@@ -1,0 +1,18 @@
+#!/bin/bash
+
+find . -name "*.*fsl" -delete
+find . -name "*.fasl" -delete
+
+# Delete the asdf2 cached fasl files for the current directory
+DIR=`pwd -P`
+if cd ~/.cache/common-lisp 2>/dev/null; then
+  CACHE=`pwd`
+  for D in `ls`; do
+    FASLDIR="$CACHE/$D$DIR"
+    #echo $FASLDIR
+    if cd $FASLDIR 2>/dev/null; then
+        find . -name "*.*fsl" \! -path "./quicklisp/*" -delete
+        find . -name "*.fasl" \! -path "./quicklisp/*" -delete
+    fi
+  done
+fi

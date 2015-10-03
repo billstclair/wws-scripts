@@ -1,0 +1,13 @@
+#!/bin/bash
+RELEASE_DIR=~/erlang/release
+if [[ $1 == '' ]]; then
+  echo "Usage: . kerl_activate <release>|list|deactivate"
+elif [[ $1 == 'list' ]] || [[ $1 == 'ls' ]]; then
+    ls $RELEASE_DIR;
+elif [[ $1 == 'deactivate' ]]; then
+    kerl_deactivate
+elif [ -d $RELEASE_DIR/$1 ]; then
+    KERL_ENABLE_PROMPT=y . $RELEASE_DIR/$1/activate
+else
+    echo "Nonexistent release: $1"
+fi

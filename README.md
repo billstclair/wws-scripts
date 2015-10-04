@@ -1,4 +1,6 @@
-# Bill St. Clair's Shell Scripts
+# Useful Little Shell Scripts
+
+"I'm a useful engine." -- Thomas the Tank Engine
 
 This is a collection of little shell scripts that I've written over the years. I never attempted to make them portable to different shells, so many will only work in <code>bash</code>. If you like one, and make it work in a different shell, please don't break it in <code>bash</code> and submit a pull request. My initials are "wws"; hence the repository name.
 

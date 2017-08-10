@@ -91,6 +91,8 @@ find . -name "<pattern>" -print0 | xargs -0 <command> <arg> ...
 
 `erlfiles` passes `*.erl` as the pattern. Make your own.
 
+## lispfiles
+
 ```lispfiles <arg> ...```
 
 is the same as:

@@ -1,3 +1,3 @@
 #!/bin/bash
 echo expecting xx.xx.xx.xx
-curl http://billstclair.com/ip.php
+curl https://billstclair.com/ip.php

@@ -1,4 +1,4 @@
 #!/bin/bash
-xfiles "*.lisp" "$@"
+find . -not -regex "\./quicklisp/.*" -and -name "*.lisp" -print0 | xargs -0 "$@"
 
 

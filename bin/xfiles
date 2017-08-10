@@ -1,4 +1,4 @@
 #!/bin/bash
 PATTERN=$1
 shift
-find . -name "$PATTERN" -exec echo '"{}"' \; | xargs "$@"
+find . -name "$PATTERN" -print0 | xargs -0 "$@"

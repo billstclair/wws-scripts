@@ -86,13 +86,23 @@ xfiles <pattern> <command> <arg> ...
 is the same as:
 
 ```
-find . -name "<pattern>" | xargs <command> <arg> ...
+find . -name "<pattern>" -print0 | xargs -0 <command> <arg> ...
 ```
 
-`lispfiles` passes `"*.lisp"` as the pattern. `erlfiles` passes `*.erl` as the pattern. Make your own.
+`erlfiles` passes `*.erl` as the pattern. Make your own.
+
+```lispfiles <arg> ...```
+
+is the same as:
+
+```
+find . -not -regex "\./quicklisp/.*" -and -name "*.lisp" -print0 | xargs -0 <arg> ...
+```
 
 I usually use it to grep source code:
 
 ```
 lispfiles fgrep defpackage
 ```
+
+`lispfiles` will NOT descend into a sub-directory named "`quicklisp`", since you usually want to search YOUR code, not other people's libraries. You can "`cd quicklisp`" to find code there (unless you want to find code in "`quicklisp/quicklisp`", in which case you'll need ANOTHER "`cd quicklisp`").

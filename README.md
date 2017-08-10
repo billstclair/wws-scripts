@@ -107,4 +107,4 @@ I usually use it to grep source code:
 lispfiles fgrep defpackage
 ```
 
-`lispfiles` will NOT descend into a sub-directory named `quicklisp", since you usually want to search YOUR code, not other people's libraries. You can `cd quicklisp" to find code there (unless you want to find code in `quicklisp/quicklisp", in which case you'll need ANOTHER `cd quicklisp").
+`lispfiles` will NOT descend into a sub-directory named `quicklisp`, since you usually want to search YOUR code, not other people's libraries. You can `cd quicklisp` to find code there (unless you want to find code in `quicklisp/quicklisp`, in which case you'll need ANOTHER `cd quicklisp`).

@@ -8,7 +8,7 @@ All the script files named below are in the `bin` sub-directory of this one.
 
 ## delfasls
 
-Useful to lispers. Deletes all fasl files in the current directory or any of its subdirectories, whether they're actually in this directory or they're in the sub-directory of ~/.cache into which ASDF will store them by default. This will force ASDF (or Quicklisp) to recompie the corresponding source files.
+Useful to lispers. Deletes all fasl files in the current directory or any of its subdirectories, whether they're actually in this directory or they're in the sub-directory of ~/.cache into which ASDF will store them by default. This will force ASDF (or Quicklisp) to recompile the corresponding source files.
 
 Does NOT delete fasls from any directory named `quicklisp`, since you rarely want to force those to recompile. If you DO want to do that, `cd` into the `quicklisp` directory first:
 

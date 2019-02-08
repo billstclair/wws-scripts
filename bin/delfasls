@@ -1,5 +1,19 @@
 #!/bin/bash
 
+if [[ "$1" == "-h" || "$1" == "--help" ]]; then
+  echo "delfasls [-h | --help | quicklisp_too]"
+  echo ""  
+  echo "delfasls deletes all the fasl files in the current directory"
+  echo "and its subdirectories."
+  echo "It also deletes the fasl files in the ASDF cache directories"
+  echo "associated with those directories."
+  echo "It does NOT delete fasl files corresponding to the sub-directory"
+  echo "named 'quicklisp', unless you give it a non-blank quicklisp_too arg."
+  exit 0
+fi
+
+QUICKLISP_TOO=$1
+
 find . -name "*.*fsl" -delete
 find . -name "*.fasl" -delete
 
@@ -11,8 +25,13 @@ if cd ~/.cache/common-lisp 2>/dev/null; then
     FASLDIR="$CACHE/$D$DIR"
     #echo $FASLDIR
     if cd $FASLDIR 2>/dev/null; then
-        find . -name "*.*fsl" \! -path "./quicklisp/*" -delete
-        find . -name "*.fasl" \! -path "./quicklisp/*" -delete
+        if [[ "x$QUICKLISP_TOO" == "x" ]]; then
+          find . -name "*.*fsl" \! -path "./quicklisp/*" -delete
+          find . -name "*.fasl" \! -path "./quicklisp/*" -delete
+        else
+          find . -name "*.*fsl" -delete
+          find . -name "*.fasl" -delete
+        fi
     fi
   done
 fi

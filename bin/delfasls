@@ -15,7 +15,7 @@ fi
 QUICKLISP_TOO=$1
 
 find . -name "*.*fsl" -delete
-find . -name "*.fasl" -delete
+find . -name "*.*fasl" -delete
 
 # Delete the asdf2 cached fasl files for the current directory
 DIR=`pwd -P`
@@ -27,10 +27,10 @@ if cd ~/.cache/common-lisp 2>/dev/null; then
     if cd $FASLDIR 2>/dev/null; then
         if [[ "x$QUICKLISP_TOO" == "x" ]]; then
           find . -name "*.*fsl" \! -path "./quicklisp/*" -delete
-          find . -name "*.fasl" \! -path "./quicklisp/*" -delete
+          find . -name "*.*fasl" \! -path "./quicklisp/*" -delete
         else
           find . -name "*.*fsl" -delete
-          find . -name "*.fasl" -delete
+          find . -name "*.*fasl" -delete
         fi
     fi
   done

@@ -92,6 +92,8 @@ lispfiles fgrep defpackage
 Like `xfiles`, but uses `git ls-files` for the full list, then filters it
 with the first parameter, then pipes it through `xargs` and adds the rest of the parameters
 
+`git-elm-files` and `git-js-files` use it.
+
 ## git-x-files-wc
 
 Same as `git-x-files "$1" wc-l`

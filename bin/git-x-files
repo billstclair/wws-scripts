@@ -1,0 +1,4 @@
+#!/bin/bash
+PATTERN=$1
+shift
+git ls-files | grep "$PATTERN" | xargs "$@"

@@ -1,0 +1,4 @@
+#!/bin/bash
+PATTERN=$1
+shift
+git-x-files "$PATTERN" wc -l

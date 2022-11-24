@@ -19,35 +19,9 @@ delfasls
 
 ## ip
 
-If you're behind multiple routers, or you want to be sure that you're connected through a VPN, it can be useful to ask a remote web server what your IP address looks like to it. This script queries `http://billstclair.com/ip.php` for that. The `ip.php` script is in the `aux` sub-directory here, in case you want to put it on your own web site instead of using mine.
+If you're behind multiple routers, or you want to be sure that you're connected through a VPN, it can be useful to ask a remote web server what your IP address looks like to it. This script queries `http://billstclair.com/cgi-bin/ip.sh` for that. The `ip.sh` script is in the `aux` sub-directory here, in case you want to put it on your own web site instead of using mine. There's also an alternative, `ip.php`, if that's easier for you.
 
 The `ip` script echoes "expecting xx.xx.xx.xx". If you want to remind yourself of what your IP should be when you're connected through a VPN provider, you can change that to the actual IP you expect. Or just comment out the line.
-
-## kerl_activate
-
-A quick way to interact with the `activate` and `kerl_deactivate` scripts created by <a href='https://github.com/yrashk/kerl'>`kerl`</a>. Instead of:
-
-```
-. path/to/release/dir/<release-name>/activate
-...
-kerl_deactivate
-```
-
-You can do:
-
-```
-. kerl_activate <release-name>
-...
-kerl_deactivate
-```
-
-The `path/to/release/dir` is wired in to the `kerl_activate` script. You'll probably need to change it to match what you use.
-
-`kerl_activate list` displays the names of the sub-directories in its wired-in release directory.
-
-`. kerl_activate deactivate` is longhand for `kerl_deactivate`, there mostly for those of us who may have forgotten `kerl_deactivate`.
-
-`kerl_activate` tells the kerl-generated `activate` script to enable the prompt that shows `(<build-name>)` at the beginning of your `PS1` shell prompt. Get rid of `KERL_ENABLE_PROMPT=y` if you don't like that.
 
 ## rsyncit
 
@@ -89,11 +63,15 @@ is the same as:
 find . -name "<pattern>" -print0 | xargs -0 <command> <arg> ...
 ```
 
-`erlfiles` passes `*.erl` as the pattern. Make your own.
+`erlfiles` passes `*.erl` as the pattern.
+`elmfiles` passes `*.elm` as the pattern.
+ Make your own.
 
 ## lispfiles
 
-```lispfiles <arg> ...```
+```
+lispfiles <arg> ...
+```
 
 is the same as:
 
@@ -108,3 +86,52 @@ lispfiles fgrep defpackage
 ```
 
 `lispfiles` will NOT descend into a sub-directory named `quicklisp`, since you usually want to search YOUR code, not other people's libraries. You can `cd quicklisp` to find code there (unless you want to find code in `quicklisp/quicklisp`, in which case you'll need ANOTHER `cd quicklisp`).
+
+## git-x-files
+
+Like `xfiles`, but uses `git ls-files` for the full list, then filters it
+with the first parameter, then pipes it through `xargs` and adds the rest of the parameters
+
+## git-x-files-wc
+
+Same as `git-x-files "$1" wc-l`
+
+Useful to count lines in files of a partilar type in a git repository.
+
+`git-elm-files-wc` and `git-js-files-wc` use it.
+
+## git-x-files-wc-total
+
+Same as `git-x-files-wc`, but prints only the total line at the end, not the individual files:
+
+```
+git-x-files-wc "$1" wc -l | grep total
+```
+
+`git-elm-files-wc-total` and `git-js-files-wc-total` use it.
+
+## kerl_activate
+
+A quick way to interact with the `activate` and `kerl_deactivate` scripts created by <a href='https://github.com/yrashk/kerl'>`kerl`</a>. Instead of:
+
+```
+. path/to/release/dir/<release-name>/activate
+...
+kerl_deactivate
+```
+
+You can do:
+
+```
+. kerl_activate <release-name>
+...
+kerl_deactivate
+```
+
+The `path/to/release/dir` is wired in to the `kerl_activate` script. You'll probably need to change it to match what you use.
+
+`kerl_activate list` displays the names of the sub-directories in its wired-in release directory.
+
+`. kerl_activate deactivate` is longhand for `kerl_deactivate`, there mostly for those of us who may have forgotten `kerl_deactivate`.
+
+`kerl_activate` tells the kerl-generated `activate` script to enable the prompt that shows `(<build-name>)` at the beginning of your `PS1` shell prompt. Get rid of `KERL_ENABLE_PROMPT=y` if you don't like that.

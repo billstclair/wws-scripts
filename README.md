@@ -112,6 +112,20 @@ git-x-files-wc "$1" wc -l | grep total
 
 `git-elm-files-wc-total` and `git-js-files-wc-total` use it.
 
+## em
+
+Pipe stdout and errout for a command to `more`. Short for `errout-more`.
+
+```
+em bin/build
+```
+
+is the same as:
+
+```
+bin/build 2>&1 | more
+```
+
 ## kerl_activate
 
 A quick way to interact with the `activate` and `kerl_deactivate` scripts created by <a href='https://github.com/yrashk/kerl'>`kerl`</a>. Instead of:

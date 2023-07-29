@@ -1,2 +1,7 @@
 #!/bin/bash
-if [[ -z $* ]];then rsync -av ./ `./.sshdir`;else rsync $* `./.sshdir`;fi
+if [[ -z $RSYNCGIT ]]; then RSYNCGIT='N';fi
+EXCLUDE=''
+if [[ $RSYNCGIT == 'N' ]]; then
+    EXCLUDE="--exclude=.git/"
+fi
+if [[ -z $* ]];then rsync $EXCLUDE -av ./ `./.sshdir`;else rsync $EXCLUDE $* `./.sshdir`;fi
